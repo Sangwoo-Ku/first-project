@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Startup - Startup Website Template</title>
+
+
+    <style>
+  * {margin:0; padding:0;}
+ul li {list-style:none;}
+.clearfix:after{content:'';display:block; clear:both;}
+body {background:green; overflow-y:scroll;}
+header {	
+	margin-top:20px;
+	background:linear-gradient(white 50px, rgba(255,255,255,0.5) 50px, rgba(255,255,255,0.5) );
+	height:50px; 
+	overflow:hidden;
+}
+
+nav {width:960px; margin:0 auto;}
+nav > ul > li {float:left; line-height:50px; margin-right:40px; position: relative;}
+nav > ul > li ul{ width:100%; display: none; position: absolute;}
+nav > ul > li ul li{white-space:nowrap;}
+
+
+      </style>
+   
+</head>
+
+<body>
+    <header>
+        <nav>
+                <ul class="clearfix">
+                    <li>1st menu
+                            <ul>
+                                <li>2nd menu</li>
+                                <li>2nd menu</li>
+                            </ul>
+                    </li>
+                    <li>2nd menu
+                            <ul>
+                                <li>2nd menu menu</li>
+                                <li>2nd menu</li>
+                                <li>2nd menu</li>
+                                <li>2nd menu</li>
+                            </ul>
+                    </li>
+                    <li>3rd menu
+                            <ul>
+                                <li>2nd menu</li>
+                                <li>2nd menu</li>
+                            </ul>
+                    </li>
+                    <li>4th menu
+                            <ul>
+                                <li>2nd menu</li>
+                                <li>2nd menu</li>
+                                <li>2nd menu</li>
+                            </ul>
+                    </li>				
+    
+                </ul>
+        </nav>
+    </header>
+</body>
+<script>
+ $(function(){
+        var $firstMenu = $('nav > ul > li');
+        var $header = $('header');
+        var $headerHeight = $header.outerHeight();  //지금의 헤더의 높이 
+
+        $firstMenu.mouseenter(function(){  //마우스 온
+					  var currentMenu = $(this);
+            var subHeight = $(this).find('ul').outerHeight();
+            $header.stop().animate({height: $headerHeight + subHeight + 'px'},300);
+					//settimeout
+					  setTimeout(function(){currentMenu.find('ul').show();},300);
+					  
+
+        })
+        .mouseleave(function(){             //마우스 리시브
+            $header.stop().animate({height: $headerHeight  + 'px'},300)
+					  $(this).find('ul').hide();
+        });
+    });
+
+  </script> 
+</html>
